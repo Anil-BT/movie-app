@@ -1,0 +1,36 @@
+type Movie {
+    id: ID!
+    title: String!
+    released: Int!
+    tagline: String
+    roles: [Role]
+}
+
+type Person {
+    id: ID!
+    name: String
+    born: Int
+    movies: [Movie]
+}
+
+type Role {
+    roles: [String]
+    person: Person
+    movie: Movie
+}
+
+input MovieInput{
+    title: String!
+    released: Int!
+    tagline: String
+}
+
+# The Root Query for the application
+type Query {
+    allMovies: [Movie]!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    addMovie(input: MovieInput): Movie!
+}
